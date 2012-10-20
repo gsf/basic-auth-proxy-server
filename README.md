@@ -1,4 +1,4 @@
-es.grrawr.com
-=============
+basic-auth-proxy
+================
 
-ES at grrawr
+A basic access authentication proxy server in Node.
