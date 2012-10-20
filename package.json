@@ -1,0 +1,19 @@
+{
+  "name": "es.grrawr.com",
+  "version": "0.0.0",
+  "description": "ES at grrawr",
+  "homepage": "https://github.com/gsf/es.grrawr.com",
+  "author" : "Gabriel Farrell <g@grrawr.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gsf/es.grrawr.com.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "http-proxy": "0.8.3"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
