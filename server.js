@@ -3,6 +3,8 @@ var httpProxy = require('http-proxy')
 
 var port = process.env.PORT || 9876
 var pairs = process.env.PAIRS || 'user:pass user2:pass2 user3:pass3'
+
+// Make an array of the user:pass pairs, base64-encoded for easy comparison
 var encoded = []
 pairs.split(' ').forEach(function (pair) {
   encoded.push(Buffer(pair).toString('base64'))
