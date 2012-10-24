@@ -4,7 +4,9 @@ var httpProxy = require('http-proxy')
 
 var port = process.env.PORT || 9876
 var proxiedHost = process.env.PROXIEDHOST || '127.0.0.1'
-var proxiedPort = process.env.PROXIEDPORT || 8765
+// PROXIEDPORT has to be converted a number. See
+// https://github.com/nodejitsu/node-http-proxy/issues/321
+var proxiedPort = +process.env.PROXIEDPORT || 8765
 
 // user:pass pairs must be separated by whitespace
 var pairStr = process.env.PAIRS || 'user:pass user2:pass2 user3:pass3'
