@@ -12,18 +12,16 @@ var proxiedPort = +process.env.PROXIEDPORT || 8765
 var pairStr = process.env.PAIRS || 'user:pass user2:pass2 user3:pass3'
 var pairs = {}
 pairStr.split(/\s+/).forEach(function (pair) {
-  var pairArr = pair.split(':')
-  pairs[pairArr[0]] = pairArr[1]
+  var userPass = pair.split(':')
+  pairs[userPass[0]] = userPass[1]
 })
+function validate (username, password, cb) {
+  if (pairs[username] === password) return cb()
+  cb(new Error('No match'))
+}
 
 httpProxy.createServer(
-  hedge({
-    realm: process.env.REALM || 'luxembourg',
-    validate: function (username, password, cb) {
-      if (pairs[username] === password) return cb()
-      cb(new Error('No match'))
-    }
-  }), 
+  hedge({validate: validate}), 
   proxiedPort, 
   proxiedHost
 ).listen(port, function () {
