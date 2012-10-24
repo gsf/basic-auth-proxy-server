@@ -7,6 +7,7 @@ var proxiedHost = process.env.PROXIEDHOST || '127.0.0.1'
 // PROXIEDPORT has to be converted a number. See
 // https://github.com/nodejitsu/node-http-proxy/issues/321
 var proxiedPort = +process.env.PROXIEDPORT || 8765
+var realm = process.env.REALM
 
 // user:pass pairs must be separated by whitespace
 var pairStr = process.env.PAIRS || 'user:pass user2:pass2 user3:pass3'
@@ -21,7 +22,7 @@ function validate (username, password, cb) {
 }
 
 httpProxy.createServer(
-  hedge({validate: validate}), 
+  hedge({realm: realm, validate: validate}), 
   proxiedPort, 
   proxiedHost
 ).listen(port, function () {
