@@ -18,8 +18,11 @@ pairStr.split(/\s+/).forEach(function (pair) {
 
 httpProxy.createServer(
   hedge({
-    pairs: pairs,
-    realm: process.env.REALM || 'luxembourg'
+    realm: process.env.REALM || 'luxembourg',
+    validate: function (username, password, cb) {
+      if (pairs[username] === password) return cb()
+      cb(new Error('No match'))
+    }
   }), 
   proxiedPort, 
   proxiedHost
