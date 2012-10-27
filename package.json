@@ -10,7 +10,7 @@
   },
   "main": "server.js",
   "dependencies": {
-    "hedge": "0.0.3",
+    "hedge": "0.0.4",
     "http-proxy": "0.8.3"
   },
   "engines": {
